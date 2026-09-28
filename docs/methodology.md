@@ -69,3 +69,7 @@ Analysis distinguishes between:
 1. directly measured observations;
 2. architectural interpretations supported by those observations;
 3. hypotheses requiring additional experiments or profiling.
+
+### Load Model
+
+These benchmarks use closed-loop saturation workloads. All requests are made available immediately with `--request-rate inf`, while `--max-concurrency` limits the number of in-flight requests. Reported TTFT and end-to-end latency measure service-level latency after a request is admitted and exclude load-generator queue time. These measurements should not be interpreted as open-loop production arrival latency.

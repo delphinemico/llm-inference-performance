@@ -40,13 +40,10 @@ In contrast, median TPOT increased much more modestly, from 20.12 ms to 22.91 ms
 
 ### Interpretation
 
-vLLM converted higher concurrency into substantial aggregate throughput,
-but scaling was not free. User-visible degradation appeared much more
-strongly in TTFT than in steady-state token-generation latency.
+vLLM converted higher concurrency into substantial aggregate throughput, but scaling was not free.  
+Service-level TTFT degradation for admitted requests appeared much more strongly than steady-state token-generation latency.
 
-This pattern is consistent with increasing scheduling, queueing, batching,
-and prefill pressure as more requests compete for the GPU, while the
-per-token decode rate remained comparatively stable.
+This pattern is consistent with increasing scheduling, queueing, batching, and prefill pressure as more requests compete for the GPU, while the per-token decode rate remained comparatively stable.
 
 ### Engineering Implication
 

@@ -1,10 +1,11 @@
 # LLM Inference Performance
 
-Controlled performance characterization and optimization of modern LLM inference systems.
+Controlled characterization of LLM inference performance, beginning with single-GPU vLLM serving on NVIDIA L40S.
 
-This repository investigates how serving architecture, workload shape, caching, decoding strategies, model precision, and GPU behavior affect LLM inference latency, throughput, memory utilization, and scalability.
+The current benchmark covers concurrency scaling, prefill-heavy workloads, decode-heavy workloads, and automatic prefix caching.  
+Additional serving engines and inference optimizations are planned in the roadmap.
 
-## Study 01: Single-GPU vLLM Serving Characterization
+## Benchmark 01: Single-GPU vLLM Serving Characterization
 
 The first study characterizes vLLM inference behavior on a single NVIDIA L40S using Qwen2.5-7B-Instruct.
 
