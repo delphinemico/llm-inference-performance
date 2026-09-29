@@ -1,8 +1,6 @@
 # Findings
 
-This study characterizes single-GPU vLLM inference behavior under
-controlled changes in concurrency, prompt length, generation length,
-and automatic prefix caching.
+This benchmark characterizes single-GPU vLLM inference behavior under controlled changes in concurrency, prompt length, generation length, and automatic prefix caching.
 
 ## Experimental Context
 
@@ -127,10 +125,7 @@ slightly from 171.3 to 187.0 tokens/s.
 
 Long generations are fundamentally different from long prompts.
 
-The first token can still arrive quickly and tokens can continue streaming
-at approximately the same per-token rate, while the complete request
-remains active for much longer. As a result, completed requests per second
-falls sharply even though token throughput remains healthy.
+The first token can still arrive quickly and tokens can continue streaming at approximately the same per-token rate, while the complete request remains active for much longer. As a result, completed-request throughput falls sharply even though token throughput remains healthy.
 
 ### Engineering Implication
 
@@ -167,14 +162,9 @@ improved much less, by approximately 8%.
 
 ### Interpretation
 
-The strongest improvement appeared in TTFT rather than TPOT, which is
-consistent with the mechanism being tested: cached KV blocks allow the
-serving engine to avoid recomputing much of the repeated prefix during
-prefill, while newly generated decode tokens still require computation.
+The strongest improvement appeared in TTFT rather than TPOT, which is consistent with the mechanism being tested: cached KV blocks allow the serving engine to avoid recomputing much of the repeated prefix during prefill, while newly generated decode tokens still require computation.
 
-The result therefore provides empirical evidence that prefix caching is
-particularly valuable when requests repeatedly share substantial stable
-context.
+The result shows a substantial TTFT benefit for this prewarmed shared-prefix workload.
 
 ### Engineering Implication
 
@@ -220,7 +210,7 @@ serving engine, and GPU.
 These results characterize one controlled serving configuration rather
 than provide universal performance claims.
 
-The study uses:
+The benchmark uses:
 
 - a single NVIDIA L40S GPU;
 - one model, Qwen2.5-7B-Instruct;

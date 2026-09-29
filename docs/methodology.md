@@ -20,7 +20,7 @@ Examples include:
 
 ## Environment Recording
 
-Each study records relevant execution context, including:
+Each benchmark records relevant execution context, including:
 
 - GPU
 - model
@@ -37,13 +37,15 @@ Each study records relevant execution context, including:
 
 Controlled comparisons use reproducible workload definitions.
 
-Deterministic decoding (`temperature = 0`) is used for the controlled
-benchmark comparisons so that workload and serving-system behavior,
-rather than sampling variation, dominate differences between runs.
+Deterministic decoding (`temperature = 0`) is used for the controlled benchmark comparisons so that workload and serving-system behavior, rather than sampling variation dominate differences between runs.
+
+## Load Model
+
+These benchmarks use closed-loop saturation workloads. All requests are made available immediately with `--request-rate inf`, while `--max-concurrency` limits the number of in-flight requests. Reported TTFT and end-to-end latency measure service-level latency after a request is admitted and exclude load-generator queue time. These measurements should not be interpreted as open-loop production arrival latency.
 
 ## Metrics
 
-Depending on the study, measurements may include:
+Depending on the benchmark, measurements may include:
 
 - Time to First Token (TTFT)
 - Time per Output Token (TPOT)
@@ -69,7 +71,3 @@ Analysis distinguishes between:
 1. directly measured observations;
 2. architectural interpretations supported by those observations;
 3. hypotheses requiring additional experiments or profiling.
-
-### Load Model
-
-These benchmarks use closed-loop saturation workloads. All requests are made available immediately with `--request-rate inf`, while `--max-concurrency` limits the number of in-flight requests. Reported TTFT and end-to-end latency measure service-level latency after a request is admitted and exclude load-generator queue time. These measurements should not be interpreted as open-loop production arrival latency.

@@ -82,6 +82,7 @@ def plot_concurrency_throughput(result_dir: Path, figure_dir: Path):
 
     plt.figure()
     plt.plot(concurrencies, throughput, marker="o")
+    plt.xticks(concurrencies)
     plt.xlabel("Max concurrency")
     plt.ylabel("Output throughput (tokens/s)")
     plt.title("Output Throughput vs Concurrency")
@@ -111,6 +112,7 @@ def plot_concurrency_ttft(result_dir: Path, figure_dir: Path):
 
     plt.figure()
     plt.plot(concurrencies, median_ttft, marker="o")
+    plt.xticks(concurrencies)
     plt.xlabel("Max concurrency")
     plt.ylabel("Median TTFT (ms)")
     plt.title("Time to First Token vs Concurrency")

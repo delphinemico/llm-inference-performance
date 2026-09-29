@@ -2,9 +2,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-STUDY_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+BENCHMARK_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-RESULT_DIR="${RESULT_DIR:-$STUDY_DIR/results/local}"
+RESULT_DIR="${RESULT_DIR:-$BENCHMARK_DIR/results/local}"
 
 mkdir -p "$RESULT_DIR"
 

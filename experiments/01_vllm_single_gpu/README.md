@@ -229,7 +229,7 @@ Open a second terminal on the same host and change to the benchmark directory.
 Verify that the server is ready:
 
 ```bash
-curl http://127.0.0.1:8000/v1/models
+curl "http://${HOST:-127.0.0.1}:${PORT:-8000}/v1/models"
 ```
 
 Proceed after the endpoint responds successfully.
@@ -302,10 +302,16 @@ Published baseline results:
 results/L40S_2026-09-26/
 ```
 
-Generated figures:
+Generated local benchmark results and summary:
+
+```
+results/local/
+```
+
+Generated local figures:
 
 ```text
-figures/
+figures/local/
 ```
 
 Detailed interpretation:
