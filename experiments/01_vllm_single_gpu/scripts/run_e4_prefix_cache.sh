@@ -21,7 +21,7 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STUDY_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-RESULT_DIR="${RESULT_DIR:-$STUDY_DIR/results/L40S_2026-09-26}"
+RESULT_DIR="${RESULT_DIR:-$STUDY_DIR/results/local}"
 MODEL="${MODEL:-Qwen/Qwen2.5-7B-Instruct}"
 
 mkdir -p "$RESULT_DIR"

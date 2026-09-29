@@ -145,9 +145,8 @@ to improve every latency regime.
 
 ## E4 - Automatic Prefix Caching
 
-The workload used an approximately 2048-token input consisting of a
-1536-token shared prefix plus 512 variable tokens. Output length was
-64 tokens and concurrency was 4.
+The workload used a 2048-token input consisting of a 1536-token shared prefix plus 512 variable tokens. Output length was 64 tokens and concurrency was 4.
+For the cache-enabled condition, the shared prefix was prewarmed with 10 requests before the measured benchmark run.
 
 | Prefix caching | Request throughput (req/s) | Output throughput (tok/s) | Median TTFT (ms) | P99 TTFT (ms) | Median TPOT (ms) | Median E2E (ms) |
 |---|---:|---:|---:|---:|---:|---:|
@@ -158,8 +157,7 @@ The workload used an approximately 2048-token input consisting of a
 
 ### Observation
 
-Enabling prefix caching reduced median TTFT from 464.0 ms to 164.6 ms,
-approximately a 64.5% reduction. P99 TTFT fell by approximately 66.6%.
+In the prewarmed cache-enabled condition, median TTFT was 164.6 ms compared with 464.0 ms with caching disabled, a 64.5% reduction in the observed run.
 
 Request throughput and output-token throughput both increased by
 approximately 29%.
