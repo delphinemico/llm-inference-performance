@@ -1,0 +1,5 @@
+max_input_len: 4096
+max_seq_len: 8192
+max_num_tokens: 8192
+kv_cache_config:
+  enable_block_reuse: false

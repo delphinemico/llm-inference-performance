@@ -1,0 +1,27 @@
+Engine: TensorRT-LLM
+TensorRT-LLM version: 1.2.1
+Backend: PyTorch
+Checkpoint format: Hugging Face
+Model: Qwen/Qwen2.5-7B-Instruct
+
+PyTorch: 2.9.1+cu130
+PyTorch CUDA: 13.0
+CUDA toolkit: 13.1
+GPU: NVIDIA L40S
+GPU memory: 46068 MiB
+NVIDIA driver: 595.91.07
+
+NumPy: 1.26.4
+fsspec: 2024.9.0
+Benchmark client: NVIDIA AIPerf 0.13.0
+
+Server configuration:
+  max_input_len: 4096
+  max_seq_len: 8192
+  max_num_tokens: 8192
+  kv_cache_config.enable_block_reuse: false
+
+Notes:
+- TensorRT-LLM was served using the modern PyTorch backend with direct Hugging Face checkpoint loading.
+- KV-cache block reuse was disabled for the official benchmark workloads.
+- All four official workloads used the same NVIDIA AIPerf workload definitions used for the vLLM and SGLang measurements.
