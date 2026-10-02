@@ -1,0 +1,8 @@
+Engine: vLLM
+Benchmark client: NVIDIA AIPerf 0.13.0
+Model: Qwen/Qwen2.5-7B-Instruct
+GPU: NVIDIA L40S
+
+Note: These measurements were collected on the original L40S host before migration.
+The recovered AIPerf artifacts explicitly record AIPerf 0.13.0 and preserve the benchmark CLI configuration.
+Host software metadata should not be assumed to match the later SGLang host.
