@@ -5,7 +5,15 @@ PyTorch CUDA: 12.8
 CUDA available: True
 GPU: NVIDIA L40S
 GPU memory: 46068 MiB
-NVIDIA driver: 570.124.06
-CUDA toolkit: 12.8
+NVIDIA driver: 595.91.07
+CUDA toolkit: 13.1
 Benchmark client: NVIDIA AIPerf 0.13.0
 Model: Qwen/Qwen2.5-7B-Instruct
+
+Server configuration:
+  RadixAttention / cross-request prefix reuse: disabled
+  Launch flag: --disable-radix-cache
+
+Notes:
+- These results are the controlled uncached SGLang baseline.
+- The PyTorch CUDA runtime is 12.8; the host CUDA toolkit is 13.1.
