@@ -71,6 +71,14 @@ Primary metrics include:
 
 Only experiments that answer a concrete serving question are included. Additional workloads or tuning are added only when they materially change the interpretation of engine behavior.
 
+## Results
+
+- Controlled baseline summary: `results/summary.csv`
+- SGLang RadixAttention shared-prefix demonstration: `results/sglang_radix_shared_prefix/results.txt`
+- Full interpretation: `analysis/findings.md`
+
 ## Status
 
-Controlled baseline complete. Engine-specific findings and targeted native-optimization analysis in progress.
+Complete.
+
+The controlled three-engine baseline is finished, and the targeted SGLang shared-prefix experiment demonstrated substantial prefix reuse with RadixAttention. No additional Experiment 02 benchmarking is planned.

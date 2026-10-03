@@ -1,0 +1,41 @@
+SGLang RadixAttention shared-prefix demonstration
+Date: 2026-10-03
+GPU: NVIDIA L40S
+Model: Qwen/Qwen2.5-7B-Instruct
+SGLang: 0.5.9
+PyTorch: 2.9.1+cu128
+PyTorch CUDA: 12.8
+
+Purpose:
+Demonstrate the effect of SGLang RadixAttention when sequential requests share a large reusable prefix.
+
+Prompt structure:
+Approximately 4,850 prompt tokens per request with a shared prefix and a small unique task suffix.
+Output length: 32 tokens.
+Five sequential requests.
+
+RadixAttention OFF:
+Request 1: 6.572 s
+Request 2: 1.066 s
+Request 3: 1.070 s
+Request 4: 1.071 s
+Request 5: 1.069 s
+
+Server logs confirmed:
+cached tokens: 0
+The prompt was fully prefetched for each request.
+
+RadixAttention ON:
+Request 1: 1.121 s
+Request 2: 0.769 s, cached tokens: 4843
+Request 3: 0.716 s, cached tokens: 4843
+Request 4: 0.698 s, cached tokens: 4843
+Request 5: 0.687 s, cached tokens: 4843
+
+Server logs confirmed:
+Later requests prefetched only 6-7 new tokens while reusing approximately 4,843 cached tokens.
+
+Interpretation:
+RadixAttention avoided recomputing nearly the entire shared prefix for subsequent requests. In this targeted workload, steady-state client-observed latency fell from approximately 1.07 s without prefix reuse to approximately 0.69-0.77 s with prefix reuse.
+
+This is a targeted architectural demonstration, not a comprehensive engine benchmark.
