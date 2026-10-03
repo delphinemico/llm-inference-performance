@@ -95,7 +95,7 @@ The test therefore supports SGLang as an interesting serving option when repeate
 
 ### vLLM
 
-vLLM remains a strong general-purpose serving baseline. Its PagedAttention-based KV-cache management and continuous batching support efficient memory use and strong concurrency behavior. In this experiment, vLLM produced the strongest high-concurrency and prefill-heavy baseline results.
+vLLM remains a strong general-purpose serving baseline. Its PagedAttention-based KV-cache management and continuous batching support efficient memory use and strong concurrency behavior. In this experiment, vLLM was numerically highest in the observed high-concurrency and prefill-heavy baseline runs.
 
 ### SGLang
 
