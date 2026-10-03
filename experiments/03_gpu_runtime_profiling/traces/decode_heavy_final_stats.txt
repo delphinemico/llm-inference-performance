@@ -1,0 +1,155 @@
+Generating SQLite file experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite from experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.nsys-rep
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/nvtx_sum.py]... 
+
+ ** NVTX Range Summary (nvtx_sum):
+
+Report was successfully run, but no data was returned.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/osrt_sum.py]... 
+
+ ** OS Runtime Summary (osrt_sum):
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)       Med (ns)      Min (ns)     Max (ns)    StdDev (ns)           Name         
+ --------  ---------------  ---------  -------------  -------------  -----------  -----------  -----------  ----------------------
+     43.7      85164048840        734    116027314.5    100091334.0        35971   4000079101  174590107.6  pthread_cond_timedwait
+     32.0      62336994134       6185     10078737.9     10074099.0     10015738     10188810      16147.1  epoll_wait            
+     10.3      20000176401          2  10000088200.5  10000088200.5  10000079765  10000096636      11929.6  sem_clockwait         
+      9.7      18912070987       1982      9541912.7     10065918.0         1920     37836827    5116456.8  poll                  
+      4.4       8587797593        512     16773042.2     16609924.5      1480422     38527757    1637611.5  sem_wait              
+      0.0          7033564          1      7033564.0      7033564.0      7033564      7033564          0.0  pthread_cond_wait     
+      0.0          6033472        522        11558.4        11760.5         1320        42331       3156.2  write                 
+      0.0          2377753        512         4644.0         4910.0         1320        21830       1567.5  read                  
+      0.0          1707625          9       189736.1         2280.0         1220      1249288     422218.5  ioctl                 
+      0.0           588529         10        58852.9        62741.0        38031        69671       9620.2  open64                
+      0.0           523847          1       523847.0       523847.0       523847       523847          0.0  pthread_mutex_lock    
+      0.0           379315         26        14589.0        15875.0         1100        67351      14457.6  pthread_cond_signal   
+      0.0            89790         10         8979.0         9625.0         4940        10810       2073.0  close                 
+      0.0            70970         20         3548.5         2970.0         1500         6730       2079.4  flock                 
+      0.0            40220          6         6703.3         1235.0         1020        20050       8743.1  pthread_cond_broadcast
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/cuda_api_sum.py]... 
+
+ ** CUDA API Summary (cuda_api_sum):
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)    Med (ns)   Min (ns)  Max (ns)  StdDev (ns)               Name              
+ --------  ---------------  ---------  ----------  ----------  --------  --------  -----------  -------------------------------
+     97.0       8611875046        512  16820068.4  16662555.5   1516732  38616829    1636974.0  cudaEventSynchronize           
+      0.9         78115667       5772     13533.6     10450.0      3200    118442       8952.5  cudaLaunchKernel               
+      0.7         60004035        511    117424.7    118572.0     56411    276224      22150.1  cudaGraphLaunch_v10000         
+      0.5         45804847       4133     11082.7      9850.0      3370     91261       4833.5  cuLaunchKernelEx               
+      0.4         38448769       2083     18458.4     15350.0      3190   5893297     128981.4  cudaMemcpyAsync                
+      0.2         15110907       4157      3635.1      3080.0       630     31870       2533.2  cudaEventQuery                 
+      0.1         12213062       3107      3930.8      3980.0       490     78081       2642.3  cudaEventRecordWithFlags_v11010
+      0.1          5204678       5702       912.8       610.0       180     24990        871.9  cudaStreamIsCapturing_v10000   
+      0.0          3563603          1   3563603.0   3563603.0   3563603   3563603          0.0  cudaDeviceSynchronize          
+      0.0          3282955       1024      3206.0      3360.5       690     18470       1173.9  cudaEventDestroy               
+      0.0          2894394       1024      2826.6      1820.5       530     31370       2266.2  cudaEventCreateWithFlags       
+      0.0          2119682       5772       367.2       330.0        70     17880        435.1  cuKernelGetName                
+      0.0          2107426        512      4116.1      4190.0      1570     21610       1122.3  cudaStreamWaitEvent            
+      0.0           472475        141      3350.9      3150.0      2690     12490       1189.5  cuLaunchKernel                 
+      0.0           239833         56      4282.7      4360.0      2670     19660       2352.7  cudaMemsetAsync                
+      0.0           144532          1    144532.0    144532.0    144532    144532          0.0  cudaHostAlloc                  
+      0.0            18501         28       660.8       410.0       350      7350       1311.7  cuKernelGetFunction            
+      0.0             8900          1      8900.0      8900.0      8900      8900          0.0  cuProfilerStart                
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+
+ ** CUDA GPU Kernel Summary (cuda_gpu_kern_sum):
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)                                                  Name                                                
+ --------  ---------------  ---------  ---------  ---------  --------  --------  -----------  ----------------------------------------------------------------------------------------------------
+     90.5        768782269        512  1501527.9  1501805.5   1496237   1504461       1413.9  std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __n…
+      3.0         25891099         28   924682.1   922568.0    914599    947465       7635.9  void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(T1::Par…
+      1.5         12572586         28   449020.9   447572.0    443972    456324       4073.9  ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn                                         
+      1.5         12555793        512    24523.0    27233.0      6240     50721       9085.5  _gumbel_sample_kernel                                                                               
+      0.4          3127482         28   111695.8   111057.0    107777    124865       3574.0  ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_32x3_tn                                    
+      0.3          2911034         28   103965.5   103585.0    101121    115137       2535.9  ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_32x1_tn                                          
+      0.3          2770005        512     5410.2     5344.0      4544     32032       1195.1  _bias_kernel                                                                                        
+      0.2          1758458        512     3434.5     3392.0      2784      3936        119.0  _gather_block_tables_kernel                                                                         
+      0.2          1731888         28    61853.1    61905.0     60672     62912        774.0  triton_poi_fused_mul_silu_slice_1                                                                   
+      0.2          1692754        512     3306.2     3136.0      2976      4064        339.8  void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void …
+      0.2          1630920        512     3185.4     3168.0      2336     23776        921.2  _get_num_sampled_and_rejected_kernel                                                                
+      0.2          1599468        512     3124.0     3104.0      2912      3648        140.7  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::ArgMaxOps<…
+      0.2          1598542        512     3122.2     3104.0      2496      3808         74.2  _combine_sampled_and_draft_tokens_kernel                                                            
+      0.2          1534581        512     2997.2     3040.0      2432      4096        189.0  _post_update_kernel                                                                                 
+      0.1          1226184        512     2394.9     2400.0      2272      2784         55.4  void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIterator…
+      0.1          1132041        512     2211.0     2176.0      2144      2560         69.4  _compute_slot_mappings_kernel                                                                       
+      0.1          1052331        512     2055.3     2048.0      1984      2400         61.8  void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void …
+      0.1          1042664        512     2036.5     2048.0      1952      2496         61.2  void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void …
+      0.1           975529         28    34840.3    34960.5     34080     35584        412.7  void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<(int)128, (int)64, (int)128, (int)4, (…
+      0.1           922346       1024      900.7      896.0       832      1152         36.1  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<int>, std::array<cha…
+      0.1           839180        512     1639.0     1664.0      1536      1856         73.6  void at::native::_scatter_gather_elementwise_kernel<(int)128, (int)8, void at::native::_cuda_scatte…
+      0.1           591140        512     1154.6     1152.0      1120      1344         13.4  _prepare_pos_seq_lens_kernel                                                                        
+      0.1           492195        512      961.3      960.0       928      1120         15.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<bool>, std::array<ch…
+      0.1           456804        512      892.2      896.0       864      1024         14.8  void <unnamed>::elementwise_kernel_with_index<int, at::native::arange_cuda_out(const c10::Scalar &,…
+      0.0           225570         27     8354.4     8385.0      8000      8768        173.7  triton_poi_fused_3                                                                                  
+      0.0           222436         28     7944.1     7936.0      7488      8544        259.8  triton_red_fused_fused_add_rms_norm_2                                                               
+      0.0           173025         28     6179.5     6048.0      5440      7232        575.2  triton_red_fused_fused_add_rms_norm_0                                                               
+      0.0           144257         36     4007.1     4000.0      3232      5088        419.1  _apply_write_kernel                                                                                 
+      0.0           106272         28     3795.4     3792.0      3360      4000        119.5  void vllm::reshape_and_cache_flash_kernel<__nv_bfloat16, __nv_bfloat16, (vllm::Fp8KVCacheDataType)0…
+      0.0             8064          1     8064.0     8064.0      8064      8064          0.0  triton_poi_fused_1                                                                                  
+      0.0             5536          1     5536.0     5536.0      5536      5536          0.0  triton_red_fused__to_copy_embedding_rms_norm_0                                                      
+      0.0             4320          1     4320.0     4320.0      4320      4320          0.0  _prepare_prefill_inputs_kernel                                                                      
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/cuda_gpu_mem_time_sum.py]... 
+
+ ** CUDA GPU MemOps Summary (by Time) (cuda_gpu_mem_time_sum):
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ----------------------------
+     50.0          1627371   1059    1536.7    1216.0       384     27616        914.0  [CUDA memcpy Host-to-Device]
+     48.0          1560025   1024    1523.5    1280.0       480      3104        516.2  [CUDA memcpy Device-to-Host]
+      2.0            64896     56    1158.9    1152.0       480      1376        113.6  [CUDA memset]               
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/cuda_gpu_mem_size_sum.py]... 
+
+ ** CUDA GPU MemOps Summary (by Size) (cuda_gpu_mem_size_sum):
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
+ ----------  -----  --------  --------  --------  --------  -----------  ----------------------------
+      0.531   1059     0.001     0.000     0.000     0.001        0.001  [CUDA memcpy Host-to-Device]
+      0.028     56     0.001     0.001     0.000     0.001        0.000  [CUDA memset]               
+      0.006   1024     0.000     0.000     0.000     0.000        0.000  [CUDA memcpy Device-to-Host]
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/openmp_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain OpenMP event data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/opengl_khr_range_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain KHR Extension (KHR_DEBUG) data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/opengl_khr_gpu_range_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/vulkan_marker_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/vulkan_gpu_marker_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/dx11_pix_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain DX11 CPU debug markers.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/dx12_gpu_marker_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain DX12 GPU debug markers.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/dx12_pix_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain DX12 CPU debug markers.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/wddm_queue_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain WDDM context data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/um_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/um_total_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/um_cpu_page_faults_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/openacc_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain OpenACC event data.
+
+Processing [experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/syscall_sum.py]... 
+SKIPPED: experiments/03_gpu_runtime_profiling/traces/decode_heavy_final.sqlite does not contain syscall data.
+
