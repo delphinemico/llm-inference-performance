@@ -29,3 +29,9 @@ models/
 # Local benchmark reproduction outputs
 experiments/01_vllm_single_gpu/results/local/
 experiments/01_vllm_single_gpu/figures/local/
+
+# Experiment 02 local reproduction outputs
+experiments/02_engine_comparison/results/local/
+
+# AIPerf implementation markers
+.aiperf_results_ready.json

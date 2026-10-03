@@ -29,9 +29,9 @@ The same four workload shapes were measured for vLLM, SGLang, and TensorRT-LLM u
 
 The three engines were close on the interactive and decode-heavy workloads when cross-request prefix reuse was removed from the comparison.
 
-vLLM showed the strongest result in this baseline at concurrency 16, reaching 568.97 output tokens/s compared with 547.44 for SGLang and 550.46 for TensorRT-LLM. Its median TTFT was also lower in that workload.
+vLLM was numerically highest in the observed concurrency-16 run, reaching 568.97 output tokens/s compared with 547.44 for SGLang and 550.46 for TensorRT-LLM. Its median TTFT was also numerically lower in that run. Because each baseline condition was measured with one benchmark run, these relatively small differences should not be interpreted as a stable engine ranking without repeated trials.
 
-vLLM also had the strongest prefill-heavy result in this configuration, with 776.13 ms median TTFT and 99.22 output tokens/s.
+vLLM was also numerically highest in the observed prefill-heavy run, with 776.13 ms median TTFT and 99.22 output tokens/s. As with the concurrency comparison, the differences should be treated as observed measurements rather than evidence of a stable ranking.
 
 The decode-heavy workload produced almost identical sustained decode behavior across the three engines. Median ITL was approximately 21 ms for all three, and median request latency was approximately 11 seconds.
 
@@ -127,7 +127,7 @@ The controlled baseline showed that vLLM, SGLang, and TensorRT-LLM can exhibit b
 
 The more useful distinction appears when workload structure is considered.
 
-vLLM provided strong general-purpose concurrency and prefill performance in the tested baseline. SGLang demonstrated a clear architectural advantage when requests reused a large common prefix through RadixAttention. TensorRT-LLM provides the NVIDIA-specific optimization path for workloads where deeper hardware-aware tuning is justified.
+vLLM provided strong general-purpose concurrency and prefill performance in the tested baseline. SGLang demonstrated effective shared-prefix reuse when requests reused a large common prefix through RadixAttention. TensorRT-LLM provides the NVIDIA-specific optimization path for workloads where deeper hardware-aware tuning is justified.
 
 Serving-engine selection should therefore be based on workload characteristics and operational requirements rather than a single headline throughput number.
 

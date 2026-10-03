@@ -23,8 +23,8 @@ else:
 sampling = SamplingParams(
     temperature=0,
     max_tokens=max_tokens,
-    min_tokens=max_tokens if args.workload == "decode" else 0,
-    ignore_eos=args.workload == "decode",
+    min_tokens=max_tokens,
+    ignore_eos=True,
 )
 
 # Warm the exact workload before profiling so one-time JIT work is excluded.

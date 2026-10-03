@@ -1,2 +1,5 @@
+# Analysis and figure-generation dependencies only.
+# Serving engines, AIPerf, and Nsight Systems use separate runtime environments.
+
 matplotlib
 pandas

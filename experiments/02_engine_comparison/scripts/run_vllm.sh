@@ -4,19 +4,23 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EXP_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-OUT="${OUT:-$EXP_DIR/results/local/trtllm}"
+OUT="${OUT:-$EXP_DIR/results/local/vllm}"
 HOST="${HOST:-127.0.0.1}"
 PORT="${PORT:-8000}"
 MODEL="${MODEL:-Qwen/Qwen2.5-7B-Instruct}"
 URL="http://${HOST}:${PORT}"
 
-run_workload() {
+run_case () {
     local name="$1"
     local input_tokens="$2"
     local output_tokens="$3"
     local concurrency="$4"
 
-    mkdir -p "$OUT/$name"
+    echo
+    echo "=================================================="
+    echo "Running: $name"
+    echo "Input=$input_tokens Output=$output_tokens Concurrency=$concurrency"
+    echo "=================================================="
 
     aiperf profile \
       --model "$MODEL" \
@@ -39,7 +43,7 @@ run_workload() {
       --artifact-dir "$OUT/$name"
 }
 
-run_workload interactive_c4       512  128 4
-run_workload high_concurrency_c16 512  128 16
-run_workload prefill_heavy        4096 64  4
-run_workload decode_heavy         512  512 4
+run_case interactive_c4       512  128 4
+run_case high_concurrency_c16 512  128 16
+run_case prefill_heavy        4096 64  4
+run_case decode_heavy         512  512 4

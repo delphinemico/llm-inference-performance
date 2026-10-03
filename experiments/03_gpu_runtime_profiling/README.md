@@ -49,17 +49,14 @@ The Python workload explicitly calls `cudaProfilerStart()` immediately before th
 
 ## Results
 
-Final Nsight reports:
+The binary Nsight `.nsys-rep` reports are intentionally excluded from version control because they are generated profiling artifacts. They can be regenerated using the profiling command above.
 
-- `traces/prefill_heavy_final.nsys-rep`
-- `traces/decode_heavy_final.nsys-rep`
+Committed text summaries:
 
-Text summaries:
+- [Prefill-heavy Nsight statistics](traces/prefill_heavy_final_stats.txt)
+- [Decode-heavy Nsight statistics](traces/decode_heavy_final_stats.txt)
 
-- `traces/prefill_heavy_final_stats.txt`
-- `traces/decode_heavy_final_stats.txt`
-
-See `analysis/findings.md` for interpretation.
+See [analysis/findings.md](analysis/findings.md) for interpretation.
 
 ## Scope
 
